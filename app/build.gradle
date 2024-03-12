@@ -4,17 +4,17 @@ plugins {
 }
 
 android {
-    namespace 'com.stevemd.GithubAppMultimodule'
+    namespace AppConfigKt.applicationId
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.stevemd.GithubAppMultimodule"
-        minSdk 22
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        applicationId AppConfigKt.applicationId
+        minSdk AppConfigKt.minSdkVersion
+        targetSdk AppConfigKt.targetSdkVersion
+        versionCode AppConfigKt.versionCode
+        versionName AppConfigKt.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner AppConfigKt.testRunner
     }
 
     buildTypes {

@@ -1,4 +1,4 @@
-package com.stevemd.data.utils
+package com.stevemd.data.githubapiservice
 
 import com.stevemd.domain.utils.Result.Loading
 import kotlinx.coroutines.CoroutineDispatcher

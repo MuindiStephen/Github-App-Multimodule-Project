@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Github-App Multimodule Project"
 include ':app'
-include ':di'
+include ':dagger-hilt'
+include ':domain'
+include ':common'
+include ':features:profile'
+include ':features:repolist'

@@ -41,7 +41,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(Deps.coroutines)
     implementation(Deps.retrofit)
+    implementation(Deps.daggerHilt)
+    implementation(Deps.daggerHiltCompiler)
+    implementation(Deps.timberLogger)
+    implementation(Deps.gsonV)
+    implementation(Deps.gsonConverterV)
+
+    implementation(project(":dagger-hilt"))
     implementation(project(":common"))
+    implementation(project(":domain"))
 
 }

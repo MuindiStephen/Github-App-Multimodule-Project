@@ -4,7 +4,7 @@ import com.stevemd.common.dto.RepoItemApiResponse
 import com.stevemd.common.model.RepoItemEntity
 import javax.inject.Inject
 
-class RepoListItemMapper @Inject constructor():BaseMapper<List<RepoItemApiResponse>,List<RepoItemEntity>>{
+class RepositoryListItemMapper @Inject constructor():BaseMapper<List<RepoItemApiResponse>,List<RepoItemEntity>>{
 
 
     override fun mapFromApiResponse(type: List<RepoItemApiResponse>): List<RepoItemEntity> {

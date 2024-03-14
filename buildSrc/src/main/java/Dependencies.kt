@@ -11,6 +11,7 @@ object Version {
 }
 
 object Deps {
+    const val circleImageViewDep = "de.hdodenhof:circleimageview:3.1.0"
     const val lifeCycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifeCycleVersion}"
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Version.navigationVersion}"
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Version.navigationVersion}"

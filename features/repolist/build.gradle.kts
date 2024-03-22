@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -43,6 +46,17 @@ dependencies {
     implementation(Deps.daggerHilt)
     implementation(Deps.daggerHiltCompiler)
     implementation(project(":common"))
+    implementation(project(":domain"))
 
     implementation(Deps.circleImageViewDep)
+    implementation(Deps.picasso)
+    implementation(Deps.lifeCycleViewModel)
+    implementation(Deps.lifecycleRuntime)
+    implementation(Deps.livedata)
+    implementation(Deps.lifecycleService)
+    implementation(Deps.viewModelSaveState)
+
+    implementation(Deps.navigationFragment)
+    implementation(Deps.navigationUI)
+
 }

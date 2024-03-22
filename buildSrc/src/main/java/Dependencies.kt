@@ -23,4 +23,9 @@ object Deps {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"
     const val gsonV = "com.google.code.gson:gson:${Version.gsonVersions}"
     const val gsonConverterV = "com.squareup.retrofit2:converter-gson:${Version.converterGsonVersionV}"
+    const val picasso = "com.squareup.picasso:picasso:2.8"
+    const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifeCycleVersion}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifeCycleVersion}"
+    const val viewModelSaveState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Version.lifeCycleVersion}"
+    const val lifecycleService = "androidx.lifecycle:lifecycle-service:${Version.lifeCycleVersion}"
 }

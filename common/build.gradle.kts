@@ -1,3 +1,5 @@
+
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -30,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,5 +45,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(Deps.lifeCycleViewModel)
+    implementation(Deps.lifecycleRuntime)
+    implementation(Deps.livedata)
+    implementation(Deps.lifecycleService)
+    implementation(Deps.viewModelSaveState)
+
 
 }

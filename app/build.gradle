@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -39,7 +42,30 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
+    implementation(Deps.daggerHilt)
+    implementation(Deps.daggerHiltCompiler)
+    implementation(project(":common"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    implementation(Deps.circleImageViewDep)
+    implementation(Deps.picasso)
+    implementation(Deps.lifeCycleViewModel)
+    implementation(Deps.lifecycleRuntime)
+    implementation(Deps.livedata)
+    implementation(Deps.lifecycleService)
+    implementation(Deps.viewModelSaveState)
+
+    implementation(Deps.navigationFragment)
+    implementation(Deps.navigationUI)
+
+    implementation(project(":features:profile"))
+    implementation(project(":features:repolist"))
+    implementation(Deps.timberLogger)
 }

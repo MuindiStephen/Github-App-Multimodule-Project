@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/repoListFragment"
-        android:name="com.stevemd.feature.repolist.ui.RepoListFragment"
+        android:name="com.stevemd.feature.repolist.ui.RepositoryListFragment"
         android:label="fragment_repo_list"
-        tools:layout="@layout/fragment_repo_list">
+        tools:layout="@layout/fragment_repository_list">
         <deepLink app:uri="github://repolist"/>
     </fragment>
 </navigation>

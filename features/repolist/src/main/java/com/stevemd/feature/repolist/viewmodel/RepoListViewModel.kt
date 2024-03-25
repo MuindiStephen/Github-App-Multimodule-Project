@@ -1,6 +1,8 @@
 package com.stevemd.feature.repolist.viewmodel
 
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.stevemd.common.base.BaseViewModel
 import com.stevemd.common.model.RepoItemEntity
 import com.stevemd.domain.usecases.RepoListUseCase
@@ -9,11 +11,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 import com.stevemd.domain.utils.Result
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class RepoListViewModel  @Inject constructor(
     private val repoListUseCase: RepoListUseCase
-): BaseViewModel() {
+): ViewModel() {
     val action: (RepoListUiAction) -> Unit
 
     private val _uiState = MutableStateFlow<RepoListUiState<Any>>(RepoListUiState.Loading(isLoading = true))
@@ -30,8 +33,18 @@ class RepoListViewModel  @Inject constructor(
     }
 
     private fun fetchRepoList(data:RepoListUiAction.FetchRepoList){
-        execute {
-            repoListUseCase.execute(RepoListUseCase.Params(userName = data.userName)).collect{result->
+//        execute {
+//            repoListUseCase.execute(RepoListUseCase.Params(userName = data.userName)).collect{result->
+//                when(result){
+//                    is Result.Success-> _uiState.value = RepoListUiState.Success(result.data)
+//                    is Result.Error-> _uiState.value = RepoListUiState.Error(result.message)
+//                    is Result.Loading -> _uiState.value = RepoListUiState.Loading(result.loading)
+//                }
+//            }
+//        }
+
+        viewModelScope.launch {
+                        repoListUseCase.execute(RepoListUseCase.Params(userName = data.userName)).collect{result->
                 when(result){
                     is Result.Success-> _uiState.value = RepoListUiState.Success(result.data)
                     is Result.Error-> _uiState.value = RepoListUiState.Error(result.message)

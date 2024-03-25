@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.stevemd.common.extension.setUpVerticalRecyclerView
+import com.stevemd.domain.usecases.RepoListUseCase
 import com.stevemd.feature.repolist.R
 import com.stevemd.feature.repolist.adapter.RepoListAdapter
 import com.stevemd.feature.repolist.databinding.FragmentRepositoryListBinding
@@ -24,13 +27,17 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class RepositoryListFragment : Fragment() {
+class RepositoryListFragment
+@Inject constructor(
+    private val repoListUseCase: RepoListUseCase
+): Fragment() {
 
     private lateinit var binding: FragmentRepositoryListBinding
 
-    private val viewModel: RepoListViewModel by viewModels()
+    private val viewModel: RepoListViewModel by viewModels { RepoListViewModelFactory(repoListUseCase = repoListUseCase ) }
     private val adapter = RepoListAdapter {
         navigateToProfile()
     }
@@ -92,4 +99,15 @@ class RepositoryListFragment : Fragment() {
 //            }
 //        }
 //    }
+}
+class RepoListViewModelFactory @Inject constructor(
+    private val repoListUseCase: RepoListUseCase
+)  : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(RepoListViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return RepoListViewModel(repoListUseCase) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }
